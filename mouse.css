@@ -1,0 +1,64 @@
+span{
+    color: rgb(131, 128, 128);
+}
+.floor{
+    width: 100%;
+    height: 500px;
+    background-color: black;
+    perspective: 800px;
+    overflow: hidden;
+}
+.floor>div{
+    color: aliceblue;
+    font-size: 4rem;
+    transform-style: preserve-3d;
+}
+.floor_position{
+    position: absolute;
+    top: 250px;
+    left: calc(50% - 72px);
+}
+.bg_star{
+    width: 150%;
+    height: 750px;
+    background-image: url("1.jpg");
+    background-size: cover;
+    transform: translate3d(0px,0px,0px);
+    position: relative;
+    top: -100px;
+    left: -100px;
+}
+.one>div:nth-child(2){
+    transform: translate3d(0px,0px,0px);
+}
+.one>div:nth-child(3){
+    transform: translate3d(-150px,-100px,-300px);
+}
+.one>div:nth-child(4){
+    transform: translate3d(-300px,-200px,-600px);
+}
+.two>div:nth-child(2){
+    transform: translate3d(0px,0px,0px);
+}
+.two>div:nth-child(3){
+    transform: translate3d(-0px,-50px,-300px);
+    /* transform: translate3d(-150px,-100px,-300px); */
+}
+.two>div:nth-child(4){
+    transform: translate3d(-0px,-100px,-600px);
+    /* transform: translate3d(-300px,-200px,-600px); */
+}
+.test{
+    width: 100%;
+    height: 500px;
+    line-height: 500px;
+    text-align: center;
+}
+.test>span{
+    font-size: 20rem;
+    color: aliceblue;
+    /* text-shadow: 3px 3px 1px rgb(131, 128, 128),
+    6px 6px 1px rgb(131, 128, 128),
+    9px 9px 1px rgb(131, 128, 128),
+    12px 12px 1px rgb(131, 128, 128); */
+}
