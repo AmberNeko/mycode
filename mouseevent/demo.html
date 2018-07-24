@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button style="font-size: 100px;display: inline-block;position: relative;z-index: 10;" id="left">left</button>
+    <div id="move" style="width: 80%;height: 100px;overflow: visible;display: inline-block;white-space: nowrap;">
+
+        <div style="background-color: rgb(0, 0, 0);width: 200px;height: 100px;display: inline-block;"></div>
+        <div style="background-color: rgb(255, 191, 14);width: 200px;height: 100px;display: inline-block;"></div>
+        <div style="background-color: rgb(115, 255, 0);width: 200px;height: 100px;display: inline-block;"></div>
+        <div style="background-color: rgb(8, 202, 250);width: 200px;height: 100px;display: inline-block;"></div>
+        <div style="background-color: rgb(245, 7, 7);width: 200px;height: 100px;display: inline-block;"></div>
+        <div style="background-color: rgb(71, 4, 255);width: 200px;height: 100px;display: inline-block;"></div>
+        <div style="background-color: rgb(240, 6, 170);width: 200px;height: 100px;display: inline-block;"></div>
+        <div style="background-color: rgb(0, 0, 0);width: 200px;height: 100px;display: inline-block;"></div>
+        <div style="background-color: rgb(255, 191, 14);width: 200px;height: 100px;display: inline-block;"></div>
+        <div style="background-color: rgb(115, 255, 0);width: 200px;height: 100px;display: inline-block;"></div>
+        <div style="background-color: rgb(8, 202, 250);width: 200px;height: 100px;display: inline-block;"></div>
+        <div style="background-color: rgb(245, 7, 7);width: 200px;height: 100px;display: inline-block;"></div>
+        <div style="background-color: rgb(71, 4, 255);width: 200px;height: 100px;display: inline-block;"></div>
+        <div style="background-color: rgb(240, 6, 170);width: 200px;height: 100px;display: inline-block;"></div>
+
+    </div>
+    <button style="font-size: 100px;position: relative;z-index: 10;" id="right">right</button>
+    <script>
+        (function () {
+            var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+            window.requestAnimationFrame = requestAnimationFrame;
+        })();
+        var cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame;
+        var i = 0;
+        var m = 0;
+        var s;
+        var rr;
+        var lr;
+        var x;
+        var xs;
+        var move = document.getElementById('move');
+        function add(a) {
+            document.getElementById(a).addEventListener('mouseenter', function () {
+                if (a == 'right') {
+                    leftRight(a);
+                } else {
+                    leftRight(a);
+                }
+            });
+
+        }
+
+        add('left');
+        add('right');
+
+
+        function leftRight(tag) {
+            if (tag == "left") {
+                i += 10;
+                move.style.WebkitTransform = "translateX(" + i + "px)";
+                move.style.mstransform = "translateX(" + i + "px)";
+                move.style.transform = "translateX(" + i + "px)";
+                lr = requestAnimationFrame(function () {
+                    leftRight('left');
+                });
+                // document.getElementById('move').style.WebkitTransform+="translateX(100px)";
+                // document.getElementById('move').style.mstransform+="translateX(100px)";
+                // document.getElementById('move').style.transform+="translateX(100px)";
+            } else {
+                i -= 10;
+                move.style.WebkitTransform = "translateX(" + i + "px)";
+                move.style.mstransform = "translateX(" + i + "px)";
+                move.style.transform = "translateX(" + i + "px)";
+                rr = requestAnimationFrame(function () {
+                    leftRight('right');
+                });
+                // document.getElementById('move').style.WebkitTransform+="translateX(-100px)";
+                // document.getElementById('move').style.mstransform+="translateX(-100px)";
+                // document.getElementById('move').style.transform+="translateX(-100px)";
+            }
+            // var x = i * 100;
+
+        }
+        // document.getElementById('right').addEventListener('mouseleave',function(){
+        //     cancelAnimationFrame(rr);
+        // });
+        // document.getElementById('left').addEventListener('mouseleave',function(){
+        //     cancelAnimationFrame(lr);
+        // });
+        function remove(b) {
+            document.getElementById(b).addEventListener('mouseout', function () {
+                if (b == 'right') {
+                    cancelAnimationFrame(rr); return;
+                } else {
+                    cancelAnimationFrame(lr); return;
+                }
+            });
+        }
+        remove('left');
+        remove('right');
+        // function swipe(event) {
+        //     xs = event.clientX;
+        //     if (xs > x) {
+        //         m += 100;
+        //         move.style.WebkitTransform = "translateX(" + m + "px)";
+        //         move.style.mstransform = "translateX(" + m + "px)";
+        //         move.style.transform = "translateX(" + m + "px)";
+        //     } else {
+        //         m -= 100;
+        //         move.style.WebkitTransform = "translateX(" + m + "px)";
+        //         move.style.mstransform = "translateX(" + m + "px)";
+        //         move.style.transform = "translateX(" + m + "px)";
+        //     }
+        // }
+        function test(event) {
+                x = event.clientX;
+                m+=x-s;
+                // console.log(x);
+                move.style.WebkitTransform = "translateX(" + m + "px)";
+                move.style.mstransform = "translateX(" + m + "px)";
+                move.style.transform = "translateX(" + m + "px)";
+            s=event.clientX;
+
+            }
+        move.addEventListener('mousedown', function (event) {
+            event.preventDefault();
+            s=event.clientX;
+            move.addEventListener('mousemove', test);
+        });
+        move.addEventListener('mouseup', function(){
+            move.removeEventListener('mousemove',test);
+            // x=0;s=0;
+        });
+
+    </script>
+</body>
+
+</html>
