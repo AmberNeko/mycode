@@ -27,6 +27,5 @@ function checkCookie(cname) {
         
     } else {
        
-       }
     }
 }
