@@ -5,7 +5,7 @@ function addZero(i) {
     return i;
 }
 function formatDate(d,t){
-  let d = new Date();
-  let time = d.getFullYear() + d + addZero(d.getMonth() + 1 ) + d + addZero(d.getDate()) + ' ' + addZero(d.getHours()) + t + addZero(d.getMinutes()) + t + addZero(d.getSeconds());
+  let dt = new Date();
+  let time = dt.getFullYear() + d + addZero(dt.getMonth() + 1 ) + d + addZero(dt.getDate()) + ' ' + addZero(dt.getHours()) + t + addZero(dt.getMinutes()) + t + addZero(dt.getSeconds());
   return time;
 }
