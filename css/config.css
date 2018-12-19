@@ -1,0 +1,32 @@
+* {
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  padding: .5rem 1rem;
+  border-color: transparent;
+  border-radius: 10px;
+}
+
+input,
+button {
+  border-radius: 4px;
+}
+
+input[type=checkbox] {
+  transform: scale(1.5);
+}
+
+ul {
+  list-style-type: none;
+}
