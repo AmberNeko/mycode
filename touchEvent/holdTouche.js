@@ -1,4 +1,4 @@
-var timer
+var timer;
 $(target).on({
   touchstart: function(){
     timer = setTimeout(function(){
